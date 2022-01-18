@@ -30,6 +30,7 @@ class LoginControl extends React.Component {
       <div>
         <Greeting isLoggedIn={isLoggedIn} />
         {button}
+        <Mailbox unreadMessages={messages} />
       </div>
     );
   }
@@ -67,7 +68,26 @@ function LogoutButton(props) {
   );
 }
 
+// Inline If with Logical && Operator
+
+function Mailbox(props) {
+  const unreadMessages = props.unreadMessages;
+  return (
+    <div>
+      <h1>Hello!</h1>
+      {unreadMessages.length > 0 &&
+        <h2>
+          You have {unreadMessages.length} unread messages.
+        </h2>
+      }
+    </div>
+  );
+}
+
+const messages = ['React', 'Re: React', 'Re:Re: React'];
+
 ReactDOM.render(
   <LoginControl />,
+  
   document.getElementById('root')
 );
