@@ -1,25 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function UserGreeting() {
+  return <h1>Welcome Back User!</h1>
+}
+function GuestGreeting() {
+  return <h1>Please Signup</h1>
+}
+
+function App(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if(isLoggedIn) {
+    return <UserGreeting />
+  }else {
+    return <GuestGreeting />
+  }
 }
 
 export default App;
+
+// Pass Props as follow in index.js
+// <App isLoggedIn = {false} />
